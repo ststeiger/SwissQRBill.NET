@@ -34,7 +34,7 @@ namespace TestQrCode
         {
 
             string schuldner = System.Convert.ToString(obj, System.Globalization.CultureInfo.InvariantCulture);
-            byte[] png = libQrCodeGenerator.Tests.GenerateQrBill(schuldner);
+            byte[] png = libQrCodeGenerator.Tests.GenerateQrBill(schuldner, "de");
 
             return png;
         }
@@ -51,7 +51,7 @@ namespace TestQrCode
                 if (string.IsNullOrEmpty(schuldner) || schuldner.Trim() == string.Empty)
                     schuldner = "UNBEKANNT";
 
-                png = libQrCodeGenerator.Tests.GenerateQrBill(schuldner);
+                png = libQrCodeGenerator.Tests.GenerateQrBill(schuldner, "de");
             }
             catch (System.Exception ex)
             {
