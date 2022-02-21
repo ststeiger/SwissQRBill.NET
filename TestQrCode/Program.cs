@@ -24,78 +24,80 @@ namespace TestQrCode
                 content = content.Replace("namespace Codecrete.SwissQRBill.PixelCanvas", "namespace libQrCodeGenerator.SwissQRBill.PixelCanvas");
 
                 System.IO.File.WriteAllText(file, content, System.Text.Encoding.UTF8);
-            }
+            } // Next file 
 
-        }
+        } // End Sub ChangeNamespaces 
 
 
 
-        public static byte[] GetQrBill(object obj)
+        public static byte[] GetQrBill(object obj_sprache
+          , object obj_account, object obj_amount, object obj_currency
+          , object obj_creditor_name, object obj_creditor_address_1, object obj_creditor_address_2, object obj_creditor_country
+          , object obj_debtor_name, object obj_debtor_address_1, object obj_debtor_address_2, object obj_debtor_country
+          , object obj_unstructured_message
+      )
         {
+            return libQrCodeGenerator.Tests.GenerateQrBill(obj_sprache
+                 , obj_account, obj_amount, obj_currency
+                 , obj_creditor_name, obj_creditor_address_1, obj_creditor_address_2, obj_creditor_country
+                 , obj_debtor_name, obj_debtor_address_1, obj_debtor_address_2, obj_debtor_country
+                 , obj_unstructured_message
+            );
+        } // End Function GetQrBill 
 
-            string schuldner = System.Convert.ToString(obj, System.Globalization.CultureInfo.InvariantCulture);
-            byte[] png = libQrCodeGenerator.Tests.GenerateQrBill(schuldner, "de");
 
-            return png;
-        }
-
-
-        public static string GetQrBill2(object obj)
+        // No more needed, possible errors now in QR-Code output. 
+        public static string GetQrBill2(object obj_sprache
+            , object obj_account, object obj_amount, object obj_currency
+            , object obj_creditor_name, object obj_creditor_address_1, object obj_creditor_address_2, object obj_creditor_country
+            , object obj_debtor_name, object obj_debtor_address_1, object obj_debtor_address_2, object obj_debtor_country
+            , object obj_unstructured_message
+        )
         {
             byte[] png = null;
 
             try
             {
-                string schuldner = System.Convert.ToString(obj, System.Globalization.CultureInfo.InvariantCulture);
-
-                if (string.IsNullOrEmpty(schuldner) || schuldner.Trim() == string.Empty)
-                    schuldner = "UNBEKANNT";
-
-                png = libQrCodeGenerator.Tests.GenerateQrBill(schuldner, "de");
+                png = libQrCodeGenerator.Tests.GenerateQrBill(obj_sprache
+                     , obj_account, obj_amount, obj_currency
+                     , obj_creditor_name, obj_creditor_address_1, obj_creditor_address_2, obj_creditor_country
+                     , obj_debtor_name, obj_debtor_address_1, obj_debtor_address_2, obj_debtor_country
+                     , obj_unstructured_message
+                );
             }
             catch (System.Exception ex)
             {
                 return ex.Message + System.Environment.NewLine + ex.StackTrace;
             }
-            
 
             return System.Convert.ToBase64String(png);
-        }
+        } // End Function GetQrBill2 
+
+        // In Report, Register System.Drawing (NET40), libQrCodeGenerator.dll
+
+
+        // Public Function GetQrBill(ByVal obj_sprache As Object, ByVal obj_account As Object, ByVal obj_amount As Object, ByVal obj_currency As Object, ByVal obj_creditor_name As Object, ByVal obj_creditor_address_1 As Object, ByVal obj_creditor_address_2 As Object, ByVal obj_creditor_country As Object, ByVal obj_debtor_name As Object, ByVal obj_debtor_address_1 As Object, ByVal obj_debtor_address_2 As Object, ByVal obj_debtor_country As Object, ByVal obj_unstructured_message As Object) As Byte()
+        //     Return libQrCodeGenerator.Tests.GenerateQrBill(obj_sprache, obj_account, obj_amount, obj_currency, obj_creditor_name, obj_creditor_address_1, obj_creditor_address_2, obj_creditor_country, obj_debtor_name, obj_debtor_address_1, obj_debtor_address_2, obj_debtor_country, obj_unstructured_message)
+        // End Function
+
+        // Public Function GetQrBill2(ByVal obj_sprache As Object, ByVal obj_account As Object, ByVal obj_amount As Object, ByVal obj_currency As Object, ByVal obj_creditor_name As Object, ByVal obj_creditor_address_1 As Object, ByVal obj_creditor_address_2 As Object, ByVal obj_creditor_country As Object, ByVal obj_debtor_name As Object, ByVal obj_debtor_address_1 As Object, ByVal obj_debtor_address_2 As Object, ByVal obj_debtor_country As Object, ByVal obj_unstructured_message As Object) As String
+        //     Dim png As Byte() = Nothing
+        //     
+        //     Try
+        //         png = libQrCodeGenerator.Tests.GenerateQrBill(obj_sprache, obj_account, obj_amount, obj_currency, obj_creditor_name, obj_creditor_address_1, obj_creditor_address_2, obj_creditor_country, obj_debtor_name, obj_debtor_address_1, obj_debtor_address_2, obj_debtor_country, obj_unstructured_message)
+        //     Catch ex As System.Exception
+        //         Return ex.Message & System.Environment.NewLine & ex.StackTrace
+        //     End Try
+        // 
+        //     Return System.Convert.ToBase64String(png)
+        // End Function
+
 
 
 
         // Copy CorQrCode.dll, libQrCodeGenerator.dll to both: 
         // C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\SSRS
         // C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\PublicAssemblies
-
-
-        // In Report, Register System.Drawing (NET40), libQrCodeGenerator.dll
-
-        //Function GetQrBill2(ByVal obj As Object) As String
-        //    Dim png As Byte() = Nothing
-
-        //    Try
-        //        Dim schuldner As String = System.Convert.ToString(obj, System.Globalization.CultureInfo.InvariantCulture)
-        //        If String.IsNullOrEmpty(schuldner) OrElse schuldner.Trim() = String.Empty Then schuldner = "UNBEKANNT"
-        //        png = libQrCodeGenerator.Tests.GenerateQrBill(schuldner)
-        //    Catch ex As System.Exception
-        //        Return ex.Message & System.Environment.NewLine & ex.StackTrace
-        //    End Try
-
-        //    Return System.Convert.ToBase64String(png)
-        //End Function
-
-
-        // Function GetQrBill(ByVal obj As Object) As Byte()
-        //      Dim schuldner As String = System.Convert.ToString(obj, System.Globalization.CultureInfo.InvariantCulture)
-        //      If String.IsNullOrEmpty(schuldner) OrElse schuldner.Trim() = String.Empty Then schuldner = "UNBEKANNT"
-        //      Dim png As Byte() = libQrCodeGenerator.Tests.GenerateQrBill(schuldner)
-        //      Return png
-        // End Function
-
-
-
-
 
 
         /// <summary>
@@ -111,18 +113,36 @@ namespace TestQrCode
             System.Windows.Forms.Application.Run(new Form1());
 #endif
 
+            string RPT_ES_Zweck = "Rechnungs-Nr. 2022-02-21-133\r\nKunde-Nr. 1234";
 
-            byte[] png = GetQrBill("Pia-Maria Rutschmann-Schnyder");
+
+            string rechnungsempfänger = "Pia-Maria Rutschmann-Schnyder";
+            string adresse1 = "Grosse Marktgasse 28";
+            string plz_ort = "9400 Rorschach";
+            string country = "CH";
+
+            decimal RPT_Kosten = 20m;
+
+
+            libQrCodeGenerator.Tests.Validate();
+            // byte[] png = GetQrBill("de", "CH4431999123000889012", 199.95m, "CHF" // QR-IBAN 
+            // Dim png As Byte() = GetQrBill("de", "CH93 0900 0000 8000 0209 2", RPT_Kosten, "CHF", "Swiss Life AG", "Postfach 2831", "8022 Zürich", "CH", rechnungsempfänger, adresse1, plz_ort, country, RPT_ES_Zweck)
+            byte[] png = GetQrBill("de", "CH4431999123000889012", RPT_Kosten, "CHF"
+                 , "Utopia Planetia AG", "Postfach 1234", "8000 Zürich", "CH"
+                 , rechnungsempfänger, adresse1, plz_ort, country
+                 , RPT_ES_Zweck
+            );
+
             System.IO.File.WriteAllBytes(@"D:\QrBill.png", png);
 
 
             System.Console.WriteLine(System.Environment.NewLine);
             System.Console.WriteLine(" --- Press any key to continue --- ");
             System.Console.ReadKey();
-        }
+        } // End Sub Main 
 
 
-    }
+    } // End Class Program 
 
 
-}
+} // End Namespace TestQrCode 
