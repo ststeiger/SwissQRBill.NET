@@ -2,7 +2,8 @@
 
 Open-source library for generating Swiss QR-Bill QR-codes in SSRS.
 
-This library is built for .NET Framwork 4.0 and builds on [SwissQRBill.NET](https://github.com/manuelbl/SwissQRBill.NET). 
+This library is built for .NET Framwork 4.0 and builds on [SwissQRBill.NET](https://github.com/manuelbl/SwissQRBill.NET). <br />
+(yes, SSRS is still using the full .NET Framwork 4.0)
 
 
 ## Examples
