@@ -21,6 +21,8 @@ Public Function GetQrBill(ByVal obj_sprache As Object, ByVal obj_account As Obje
 ```vblang
 =Code.GetQrBill("de", "IBAN", Fields!RPT_KZ_Total.Value, "CHF", "Utopia Planetia AG", "Postfach 9876", "8000 Zürich", "CH", Fields!RPT_ES_ADR_Zeile1.Value, Fields!RPT_ES_ADR_Zeile2.Value, Fields!RPT_ES_ADR_Zeile3.Value, "CH", Fields!RPT_ES_Zweck.Value)
 ```
+Mime-type is image/png.
+
 
 
 ## Requirements
