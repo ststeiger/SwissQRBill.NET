@@ -288,7 +288,7 @@ namespace libQrCodeGenerator
                 displayResolution *= 2; 
             } // End Using img 
 
-#if true
+#if true 
             // int width = (int)(QRBill.QrCodeWidth / 25.4 * displayResolution);
             // int height = (int)(QRBill.QrCodeHeight / 25.4 * displayResolution);
 
@@ -298,8 +298,11 @@ namespace libQrCodeGenerator
             bill.Format.OutputSize = OutputSize.QrCodeOnly; 
 #else
 
-            int width = (int)(QRBill.QrBillWidth / 25.4 * displayResolution); 
-            int height = (int)(QRBill.QrBillHeight / 25.4 * displayResolution); 
+            // int width = (int)(QRBill.QrBillWidth / 25.4 * displayResolution); 
+            // int height = (int)(QRBill.QrBillHeight / 25.4 * displayResolution);
+
+            int width = (int)QRBill.QrBillWidth; 
+            int height = (int)QRBill.QrBillHeight; 
             bill.Format.OutputSize = OutputSize.QrBillOnly; 
 #endif 
 

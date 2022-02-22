@@ -127,7 +127,7 @@ namespace TestQrCode
             libQrCodeGenerator.Tests.Validate();
             // byte[] png = GetQrBill("de", "CH4431999123000889012", 199.95m, "CHF" // QR-IBAN 
             // Dim png As Byte() = GetQrBill("de", "CH93 0900 0000 8000 0209 2", RPT_Kosten, "CHF", "Swiss Life AG", "Postfach 2831", "8022 Zürich", "CH", rechnungsempfänger, adresse1, plz_ort, country, RPT_ES_Zweck)
-            byte[] png = GetQrBill("de", "CH4431999123000889012", RPT_Kosten, "CHF"
+            byte[] png = GetQrBill("de", "IBAN_WITOUT_REFERENCE", RPT_Kosten, "CHF"
                  , "Utopia Planetia AG", "Postfach 1234", "8000 Zürich", "CH"
                  , rechnungsempfänger, adresse1, plz_ort, country
                  , RPT_ES_Zweck
