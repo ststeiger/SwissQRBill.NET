@@ -197,6 +197,9 @@ namespace libQrCodeGenerator
                     CountryCode = creditor_country // "CH"
                 },
 
+
+
+
                 // debtor data
                 // Debtor: Debitor/Schuldner/Kreditnehmer
                 Debtor = new Address
@@ -333,7 +336,8 @@ namespace libQrCodeGenerator
                             sf.LineAlignment = System.Drawing.StringAlignment.Center;
                             sf.Alignment = System.Drawing.StringAlignment.Center;
 
-                            g.DrawString(ex.Message, font, System.Drawing.Brushes.White, new System.Drawing.Rectangle(0, 0, width, height), sf);
+                            // g.DrawString(ex.Message, font, System.Drawing.Brushes.White, new System.Drawing.Rectangle(0, 0, width, height), sf);
+                            g.DrawString("BAD DATA", font, System.Drawing.Brushes.White, new System.Drawing.Rectangle(0, 0, width, height), sf);
                         } // End Using font 
 
                     } // End Using g 
